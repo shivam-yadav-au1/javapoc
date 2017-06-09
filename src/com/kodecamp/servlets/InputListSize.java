@@ -24,6 +24,8 @@ public class InputListSize extends HttpServlet{
 		String action = request.getParameter("action");
 		
 		String size = request.getParameter("size") == null ? (String) request.getAttribute("size") : request.getParameter("size");
+		
+		size = size == null ? "0" : size;
 	//	String size = "5";
 		System.out.println("value of size  "+size);
 	
@@ -31,7 +33,7 @@ public class InputListSize extends HttpServlet{
 		view = "/views/input.jsp";
 		System.out.println("action "+action);
 		
-		if(action.equals("Submit")){
+		if("Submit".equals(action)){
 			List<Student> studentList = students(Integer.parseInt(size));
 			request.setAttribute("studentList", studentList);
 			view = "/views/studentlist.jsp";

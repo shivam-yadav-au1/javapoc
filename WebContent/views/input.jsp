@@ -54,8 +54,8 @@ tr:nth-child(even) {
 
 <body>
 	<div class="container">
-		<h1>Welcome !</h1>
-		<form action="./inputPage" method="GET">
+		<a href="${pageContext.request.contextPath}/students/update?rollno=5&name=Shivam">Update Me</a>
+		<form action="./studentList" method="GET">
 			<input class="form-container" type="text" name="size" placeholder="Enter Size of List">
 			<input class="form-container" type="submit" name="action" value="Submit">
 
