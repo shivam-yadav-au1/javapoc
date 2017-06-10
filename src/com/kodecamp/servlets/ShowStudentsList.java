@@ -38,7 +38,7 @@ public class ShowStudentsList extends HttpServlet{
 
 		for (int i = 0; i < numberOfStudents; i++) {
 
-			studentList.add(new Student("" + i, "name" + i, "address" + i, "course" + i));
+			studentList.add(new Student( i, "name" + i, "address" + i, "course" + i));
 		}
 
 		return studentList;

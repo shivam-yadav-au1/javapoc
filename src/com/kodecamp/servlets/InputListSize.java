@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.kodecamp.database.DBConnection;
+import com.kodecamp.database.IDBConnection;
+import com.kodecamp.students.IStudent;
 import com.kodecamp.students.Student;
 
 public class InputListSize extends HttpServlet{
@@ -27,14 +30,15 @@ public class InputListSize extends HttpServlet{
 		
 		size = size == null ? "0" : size;
 	//	String size = "5";
-		System.out.println("value of size  "+size);
+	//	System.out.println("value of size  "+size);
 	
 			
 		view = "/views/input.jsp";
 		System.out.println("action "+action);
 		
 		if("Submit".equals(action)){
-			List<Student> studentList = students(Integer.parseInt(size));
+		//	List<Student> studentList = students(Integer.parseInt(size));
+			List<IStudent> studentList = listOfStudents();
 			request.setAttribute("studentList", studentList);
 			view = "/views/studentlist.jsp";
 			
@@ -51,10 +55,17 @@ public class InputListSize extends HttpServlet{
 
 		for (int i = 0; i < numberOfStudents; i++) {
 
-			studentList.add(new Student("" + i, "name" + i, "address" + i, "course" + i));
+			studentList.add(new Student( i, "name" + i, "address" + i, "course" + i));
 		}
 
 		return studentList;
+	}
+	private List<IStudent> listOfStudents(){
+		
+		IDBConnection dbConnection = new DBConnection();
+		
+		return dbConnection.getTableData("select * from STUDENTS ;");
+		
 	}
 
 }

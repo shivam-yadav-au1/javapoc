@@ -1,9 +1,15 @@
 package com.kodecamp.database;
 
+import java.util.ArrayList;
+
+import com.kodecamp.students.IStudent;
+
 public interface IDBConnection {
 	
-	public void insertData(final String query);
-	public void getData(final String query);
-	public boolean verifyData(final String query);
+	public void insertStudentRecord(final String query);
+	public IStudent getStudentRecord(final String query);
+	public ArrayList getTableData(final String query);
+	
+	
 
 }

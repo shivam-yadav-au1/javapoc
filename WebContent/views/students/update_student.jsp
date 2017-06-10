@@ -143,6 +143,7 @@
             -webkit-transition-duration: 0.4s;
             transition-duration: 0.4s;
             cursor: pointer;
+             border-radius: 5px;
         }
 
         .button1 {
@@ -154,6 +155,7 @@
         .button1:hover {
             background-color: #4CAF50;
             color: white;
+            transform: translateY(4px);
         }
 
         .button2 {
@@ -165,26 +167,35 @@
         .button2:hover {
             background-color: #008CBA;
             color: white;
+            transform: translateY(4px);
         }
-
-        .inputfields {
-
+        
+        .input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('searchicon.png');
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+        }
+          .message-container {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-left: 7%;
-            margin-top: 5%;
+            margin-left: 12%;
         }
 
-        .inputBox {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+        .message-container h4{
+            margin-top: 0px;
         }
+        
 
-        .textbox {
-            height: 30px;
-        }
+  
     </style>
 </head>
 <body>
@@ -204,15 +215,13 @@
     <div class="row margin-top">
 
         <div class="col_4"></div>
-        <div class="col_4 inputBox">
-            <div class="col_2 ">
-                Name Address Course
-            </div>
-            <form action="./update" class="inputfields">
-            	<input class="textbox" type="text" name="rollno" value="${param.rollno}" size="30" placeholder="Roll No">
-                <input class="textbox" type="text" name="name" value="${param.name}" size="30" placeholder="Name Of Student">
-                <input class="textbox" type="text" name="address" value="${param.address}" size="30" placeholder="Address">
-                <input class="textbox" type="text" name="course" value="${param.course }"size="30" placeholder="Course">
+        <div class="col_4">
+            
+            <form action="./update">
+            	<input class="input" type="text" name="rollno" value="${param.rollno}" size="30" placeholder="Roll No">
+                <input class="input" type="text" name="name" value="${param.name}" size="30" placeholder="Name Of Student">
+                <input class="input" type="text" name="address" value="${param.address}" size="30" placeholder="Address">
+                <input class="input" type="text" name="course" value="${param.course }"size="30" placeholder="Course">
                 
                  <!--Start of Buttons -->
     <div class="row">

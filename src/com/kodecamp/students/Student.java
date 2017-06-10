@@ -3,12 +3,12 @@ package com.kodecamp.students;
 public class Student implements IStudent{
 	
 	
-	private String id;
+	private int id;
 	private String name;
 	private String address;
 	private String course;
 	
-	public Student(final String id,final String name,final String address,final String course){
+	public Student(final int id,final String name,final String address,final String course){
 		
 		this.id = id;
 		this.name = name;
@@ -19,7 +19,7 @@ public class Student implements IStudent{
 	
 
 	@Override
-	public String getId() {
+	public int getId() {
 		System.out.println("Id of student "+id);
 		return id;
 	}
