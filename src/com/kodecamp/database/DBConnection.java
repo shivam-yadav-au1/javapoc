@@ -20,31 +20,37 @@ public class DBConnection implements IDBConnection {
 	}
 
 	@Override
-	public void insertStudentRecord(String query) {
+	public boolean insertStudentRecord(String query) {
+		
+		boolean result = true;
 
 		try {
 			Class.forName("org.h2.Driver");
 			Connection con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/testdb", "testdb", "testdb");
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
+			stmt.execute(query);
+			System.out.println("value of result : "+result);
 			con.close();
 
 		} catch (ClassNotFoundException notFound) {
 			System.out.println("Driver class not found.");
 			notFound.printStackTrace();
+			result = false;
 
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
+			result = false;
 		}
+		return result;
 
 	}
 
 	@Override
 	public IStudent getStudentRecord(String query) {
-		
+
 		System.out.println("getStudentRecord : executed");
-		
+
 		IStudent student = null;
 
 		try {
@@ -52,7 +58,6 @@ public class DBConnection implements IDBConnection {
 			Connection con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/testdb", "testdb", "testdb");
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
 
 			while (rs.next()) {
 
@@ -66,7 +71,7 @@ public class DBConnection implements IDBConnection {
 			System.out.println("Class not found");
 
 		} catch (Exception exception) {
-				exception.printStackTrace();
+			exception.printStackTrace();
 		}
 
 		return student;
@@ -74,32 +79,59 @@ public class DBConnection implements IDBConnection {
 
 	@Override
 	public ArrayList getTableData(String query) {
-		
+
 		ArrayList<IStudent> studentList = new ArrayList<IStudent>();
 		IStudent student = null;
-		try{
-			
+		try {
+
 			Class.forName("org.h2.Driver");
-			Connection  con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/testdb", "testdb", "testdb");
+			Connection con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/testdb", "testdb", "testdb");
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
-			while(rs.next()){
-				
-				student = new Student(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
+
+			while (rs.next()) {
+
+				student = new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
 				studentList.add(student);
 			}
 			con.close();
-			
-		}
-		catch(ClassNotFoundException notFound){
+
+		} catch (ClassNotFoundException notFound) {
 			System.out.println(notFound);
 			notFound.printStackTrace();
-		}catch(Exception exception){
+		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
 
 		return studentList;
+	}
+
+	public String getData(final String query) {
+
+		String dbResult = null;
+		try {
+			Class.forName("org.h2.Driver");
+			Connection con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/testdb", "testdb", "testdb");
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+
+				dbResult = rs.getString(1);
+
+			}
+
+			con.close();
+
+		} catch (ClassNotFoundException notFound) {
+			System.out.println("Class not found");
+
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+
+		return dbResult;
+
 	}
 
 }

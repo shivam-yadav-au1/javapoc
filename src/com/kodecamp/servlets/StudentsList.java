@@ -14,35 +14,40 @@ import com.kodecamp.database.IDBConnection;
 import com.kodecamp.students.IStudent;
 import com.kodecamp.students.Student;
 
-public class InputListSize extends HttpServlet{
+public class StudentsList extends HttpServlet{
 	
-	public InputListSize(){
-		System.out.println("InputListSize servlet executed");
+	public StudentsList(){
+		System.out.println("Constructor : " +this.getClass().getName());
 	}
 	
 	protected void doGet(final HttpServletRequest request,final HttpServletResponse response )
 	throws ServletException ,IOException
 	{	
+		System.out.println("doGet() executed :" +this.getClass().getName());
 		String view = null;
-		String action = request.getParameter("action");
+	//	String action = request.getParameter("action");
 		
-		String size = request.getParameter("size") == null ? (String) request.getAttribute("size") : request.getParameter("size");
+	//	String size = request.getParameter("size") == null ? (String) request.getAttribute("size") : request.getParameter("size");
 		
-		size = size == null ? "0" : size;
+	//	size = size == null ? "0" : size;
 	//	String size = "5";
 	//	System.out.println("value of size  "+size);
 	
 			
-		view = "/views/input.jsp";
-		System.out.println("action "+action);
+	/*	view = "/views/input.jsp";
+		System.out.println("action "+action);*/
 		
-		if("Submit".equals(action)){
+		List<IStudent> studentList = listOfStudents();
+		request.setAttribute("studentList", studentList);
+		view = "/views/students/students_list.jsp";
+		
+	/*	if("Submit".equals(action)){
 		//	List<Student> studentList = students(Integer.parseInt(size));
 			List<IStudent> studentList = listOfStudents();
 			request.setAttribute("studentList", studentList);
-			view = "/views/studentlist.jsp";
+			view = "/views/student_list.jsp";
 			
-		}
+		}*/
 		 
 		getServletContext().getRequestDispatcher(view).forward(request, response);
 	}
@@ -70,5 +75,3 @@ public class InputListSize extends HttpServlet{
 
 }
 
-// http://localhost:8080/javamvc.http/studentList?action=Submit
-// http://localhost:8080/javamvc.http/studentList?action=Submit

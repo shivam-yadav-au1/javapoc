@@ -6,9 +6,10 @@ import com.kodecamp.students.IStudent;
 
 public interface IDBConnection {
 	
-	public void insertStudentRecord(final String query);
+	public boolean insertStudentRecord(final String query);
 	public IStudent getStudentRecord(final String query);
 	public ArrayList getTableData(final String query);
+	public String getData(final String query);
 	
 	
 

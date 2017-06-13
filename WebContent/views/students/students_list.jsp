@@ -54,17 +54,26 @@ tr:nth-child(even) {
 
 <body>
 	<div class="container">
-		<a href="${pageContext.request.contextPath}/students/update?rollno=${rollno}&name=${name}
-		&address=${address}&course=${course}">Update</a><br>
-		<a href= "${pageContext.request.contextPath}/students/new">Add Student</a><br>
-		<a href= "${pageContext.request.contextPath}/listofstudents">List Of Students</a>
-	<!--  	<form action="./studentList" method="GET">
-			<input class="form-container" type="text" name="size" placeholder="Enter Size of List">
-			<input class="form-container" type="submit" name="action" value="Submit">
+		<h1>Welcome List Of Students</h1>
 
-		</form> -->
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Course</th>
+			</tr>
+			<c:forEach items="${studentList}" var="student">
+				<tr>
+					<td><a href = "${pageContext.request.contextPath}/students/update?rollno=${student.id}&name=
+					${student.name}&address=${student.address}&course=${student.course}">${student.id}</a></td>
+					<td>${student.name}</td>
+					<td>${student.address}</td>
+					<td>${student.course}</td>
+				</tr>
+			</c:forEach>
 
-
+		</table>
 
 	</div>
 

@@ -20,7 +20,7 @@ public class Student implements IStudent{
 
 	@Override
 	public int getId() {
-		System.out.println("Id of student "+id);
+		
 		return id;
 	}
 

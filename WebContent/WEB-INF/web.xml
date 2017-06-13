@@ -5,11 +5,9 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>javamvc.http</display-name>
 	<welcome-file-list>
-	<!--  	<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file> -->
+		<!-- <welcome-file>index.html</welcome-file> <welcome-file>index.htm</welcome-file> 
+			<welcome-file>index.jsp</welcome-file> <welcome-file>default.html</welcome-file> 
+			<welcome-file>default.htm</welcome-file> -->
 		<welcome-file>/views/input.jsp</welcome-file>
 	</welcome-file-list>
 
@@ -33,27 +31,17 @@
 		<url-pattern>/inputForm</url-pattern>
 	</servlet-mapping>
 
+
 	<servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>com.kodecamp.servlets.LoginServlet</servlet-class>
+		<servlet-name>StudentsList</servlet-name>
+		<servlet-class>com.kodecamp.servlets.StudentsList</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/loginForm</url-pattern>
+		<servlet-name>StudentsList</servlet-name>
+		<url-pattern>/listofstudents</url-pattern>
 	</servlet-mapping>
 
-
-	<servlet>
-		<servlet-name>InputListSize</servlet-name>
-		<servlet-class>com.kodecamp.servlets.InputListSize</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>InputListSize</servlet-name>
-		<url-pattern>/studentList</url-pattern>
-	</servlet-mapping>
-	
 	<servlet>
 		<servlet-name>AddNewStudent</servlet-name>
 		<servlet-class>com.kodecamp.servlets.AddNewStudent</servlet-class>
@@ -63,7 +51,7 @@
 		<servlet-name>AddNewStudent</servlet-name>
 		<url-pattern>/students/new</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>UpdateStudent</servlet-name>
 		<servlet-class>com.kodecamp.servlets.UpdateStudent</servlet-class>
@@ -73,5 +61,5 @@
 		<servlet-name>UpdateStudent</servlet-name>
 		<url-pattern>/students/update</url-pattern>
 	</servlet-mapping>
-	
+
 </web-app>

@@ -212,16 +212,15 @@
 		<!--      <h3>${pageContext}</h3></br> 
     <h3>${param}</h3></br> 
     <h3>${pageContext.request }</h3> -->
-
+	<!-- <h2>${sessionScope}</h2> -->
 		<div class="col_4"></div>
 		<div class="col_4">
 
-			<form action="${pageContext.request.contextPath}/students/new">
-				<input class="input" type="text" name="name" size="30"
-					placeholder="Name Of Student"> <input class="input"
-					type="text" name="address" size="30" placeholder="Address">
-				<input class="input" type="text" name="course" size="30"
-					placeholder="Course">
+			<form action="${pageContext.request.contextPath}/students/new" method="get">
+				<input class="input" type="text" name="rollno" size="30" placeholder="Roll No">
+				<input class="input" type="text" name="name" size="30" placeholder="Name Of Student"> 
+				<input class="input" type="text" name="address" size="30" placeholder="Address">
+				<input class="input" type="text" name="course" size="30" placeholder="Course">
 
 				<!--Start of Buttons -->
 				<div class="row">
@@ -247,34 +246,12 @@
 
 	<!-- Start of message cotainer -->
 
-	<div class="row">
-		<div class="col_4"></div>
-		<div class="col_4 message-container">
-
-			<c:if test="${message != null }">
-
-				<c:choose>
-					<c:when test="${message == false}">
-						<h4 style="color: red">Message : Error</h4>
-					</c:when>
-					<c:otherwise>
-						<h4 style="color: green">Message : Successful</h4>
-					</c:otherwise>
-				</c:choose>
-
-
-			</c:if>
-
-
-
-
-
-		</div>
-		<div class="col_4"></div>
-	</div>
-
-	<!-- End of message cotainer -->
-
+	<jsp:include page="/views/students/error.jsp">
+	
+	
+		<jsp:param value="${message}" name="messageType"/>
+	
+	</jsp:include>
 
 
 </body>
