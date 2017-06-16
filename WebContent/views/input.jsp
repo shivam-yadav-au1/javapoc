@@ -58,6 +58,8 @@ tr:nth-child(even) {
 		&address=${address}&course=${course}">Update</a><br>
 		<a href= "${pageContext.request.contextPath}/students/new">Add Student</a><br>
 		<a href= "${pageContext.request.contextPath}/listofstudents">List Of Students</a>
+		
+		<h3>${sessionScope["name"]}</h3>
 	<!--  	<form action="./studentList" method="GET">
 			<input class="form-container" type="text" name="size" placeholder="Enter Size of List">
 			<input class="form-container" type="submit" name="action" value="Submit">

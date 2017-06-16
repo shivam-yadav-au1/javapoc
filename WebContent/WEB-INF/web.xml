@@ -84,7 +84,7 @@
 	<url-pattern>/students/update</url-pattern>
 	<url-pattern>/students/new</url-pattern>
 	<url-pattern>/listofstudents</url-pattern>
-	<url-pattern>/login</url-pattern>
+	
 	</filter-mapping> 
 	<!-- End Filter -->
 

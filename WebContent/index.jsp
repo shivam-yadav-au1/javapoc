@@ -1,5 +1,8 @@
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Http Fundamentals</title>
@@ -174,14 +177,14 @@
 		<div class="image">
 			<img src="./images/man.svg">
 		</div>
-		<form action="./login" method="get">
+		<form action="${pageContext.request.contextPath}/login" method="get">
 			<input type="text" name = "username" placeholder="username" required>
 			<div class="bar">
 				<i></i>
 			</div>
 			<input type="password" name = "password" placeholder="password" required>
 			<div class="button-container">
-				<button class=" button button1" type="submit" name ="actioin" value="login">Login</button>
+				<button class=" button button1" type="submit" name ="action" value="login">Login</button>
 				<button class="button button2" type="submit" name ="action" value="register">Register</button>
 			</div>
 		</form>
